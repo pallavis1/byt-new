@@ -39,7 +39,7 @@ export class LoginComponent implements OnInit {
 
     this.passwordFormControl = new FormControl('', [
       Validators.required,
-      Validators.minLength(8) // Example: Minimum password length of 8 characters
+      // Validators.minLength(8) // Example: Minimum password length of 8 characters
     ]);
 
     this.myForm = new FormGroup({ // Create the form group
@@ -63,15 +63,20 @@ export class LoginComponent implements OnInit {
     try {
       if (this.myForm.valid) {
         console.log(this.myForm.value)
-        const { clientId,groupId,password,userEmail } = this.myForm.value
-        if(userEmail === "demo@gmail.com" && password === "123456789" ){
-          this.API.FakeApiCalling('f5ebdea9-a900-48de-81ae-b46508cd51db', {email: userEmail, password }, 'GET',"fakeUrl" )
-          .subscribe(
+        const { clientId,groupId,password,userEmail, HttpHeaders } = this.myForm.value
+        // if(userEmail === "akshay@dishco.com" && password === "123456" ){
+        // if(userEmail === userEmail && password === password ){
+          this.API.FakeApiCalling('shawmanservices/api/BotPosCheckAuthentication/FunPubCheckUserAuthentication?StrLocUserName='+userEmail+'&StrLocPassword='+password+'',{email:userEmail, password}, 'GET','fakeUrl' ).subscribe(
             data => {
-              if (data.status) {
+              if (data.StatusCode == 1) {
+                debugger
                 // alert('get Successed')
                 this.router.navigate(['/account-selection']);
               } 
+              else{
+                this.loginErrorMessage = "Incorrect Login or Password!";
+              alert('Incorrect Login or Password!!!!');
+              }
             },
             error => {
               console.log(error)
@@ -79,11 +84,11 @@ export class LoginComponent implements OnInit {
             },
           );
           
-        }else{
-          this.loginStatus = true
-          this.loginErrorMessage = "Incorrect Login or Password!"
-          // console.log(this.webService.anonymousCommonMethod('login', {email: userEmail, password }, 'POST',"GemURL" ));
-        }
+        // }else{
+        //   this.loginStatus = true
+        //   this.loginErrorMessage = "Incorrect Login or Password!"
+        //   // console.log(this.webService.anonymousCommonMethod('login', {email: userEmail, password }, 'POST',"GemURL" ));
+        // }
       }
     } catch (error) {
       console.log(error)

@@ -144,9 +144,12 @@ export class WebService {
       'Content-Type': 'application/json',
       'Accept': 'application/json',
       // 'Authorization': 'bearer ' + this.optoken
+      'ShawManKey': 'xvIvkuxKczCf8sapHZv5ia9qzPEB9iPRvtLr4iJn4SzmMjfuWgVvSsXvyw=='
     })
-    // let endPoint = this.URL[url_type] + "/" + url;
-    let endPoint = "https://mocki.io/v1" + "/" + url;
+    // let endPoint = this.URL[url_type] + "/" + url;  // original 
+    let endPoint = "https://fmtest.dishco.com" + "/" + url;
+    // let endPoint = "https://mocki.io/v1" + "/" + url; //dummy API Server
+    debugger
     console.log(endPoint, data, { headers });
     if (method == 'POST')
       return this.http.post(endPoint, data, { headers });

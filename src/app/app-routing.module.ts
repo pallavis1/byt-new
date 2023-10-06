@@ -2,7 +2,6 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule, PreloadAllModules } from '@angular/router';
 
 // import { SmsGatewayComponent } from './pages/sms-gateway/sms-gateway.component';
-// import { TestComponent } from './test/test.component';
 import { LoginComponent } from './login/login.component';
 import { AccountSelectionComponent } from './customer/account-selection.component';
 import { ReservationComponent } from './reservation/reservatoin.component';

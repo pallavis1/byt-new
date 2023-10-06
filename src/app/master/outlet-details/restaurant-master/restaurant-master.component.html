@@ -73,7 +73,7 @@
             <div class="form_panel">
               <label>{{TRANSLATE.Cuisines}}</label>
               <mat-select placeholder="" [formControl]="languages" multiple>
-                <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
+                <mat-option #allSelected [value]="0">All</mat-option>
                 <mat-option [value]="1">Select</mat-option>
               </mat-select>
             </div>
@@ -82,7 +82,8 @@
             <div class="form_panel">
               <label>{{TRANSLATE.LiquorTypes}}</label>
               <mat-select placeholder="" multiple>
-                <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
+                <!-- <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option> -->
+                <mat-option #allSelected  [value]="0">All</mat-option>
                 <mat-option [value]="language">Select</mat-option>
               </mat-select>
             </div>
@@ -1505,7 +1506,7 @@
               <div class="form_panel">
                 <label>{{TRANSLATE.CreditCardsAccepted}}</label>
                 <mat-select placeholder="" [formControl]="languages" multiple>
-                  <mat-option #allSelected (click)="toggleAllSelection()" [value]="0">All</mat-option>
+                  <mat-option #allSelected  [value]="0">All</mat-option>
                   <mat-option [value]="language">Select</mat-option>
                 </mat-select>
               </div>
